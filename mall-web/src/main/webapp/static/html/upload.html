@@ -18,7 +18,8 @@
 
 <div class="layui-upload">
 
-    <input type="file" multiple = "multiple" class="layui-btn" name = "myfiles" id="myfiles"></input>
+    <input type="file" multiple = "multiple" class="myfiles" name = "myfiles" id="myfiles"></input>
+    <input type="text" name = "myfiles" class="myfiles"></input>
     <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
         预览图：
         <div class="layui-upload-list" id="demo2"></div>
@@ -33,7 +34,7 @@
             ,upload = layui.upload;
         //多图片上传
         upload.render({
-            elem: '#myfiles',
+            elem: '.myfiles',
             url: 'http://192.168.1.5:8080/test/filesUpload'
             ,multiple: true
             ,before: function(obj){

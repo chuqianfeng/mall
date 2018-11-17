@@ -6,6 +6,12 @@ server:
     uri-encoding: UTF-8
 cupSize: A
 
+# Single file max size
+multipart:
+  maxFileSize: 1000Mb
+  maxRequestSize: 1000Mb
+
+
 #spring:
 #  profiles:
 #    active: dev
@@ -51,6 +57,32 @@ mybatis-plus:
     refresh-mapper: false
     #数据库大写命名下划线转换
     #capital-mode: true
+
+web:
+  #服务地址
+  homeUrl: http://192.168.1.5:8080/
+  #图片前缀
+  picUrl: http://192.168.1.5:8080/upload/
+
+# 分布式文件系统FDFS配置
+fdfs:
+  soTimeout: 150000 #socket连接超时时长
+  connectTimeout: 60000 #连接tracker服务器超时时长
+  resHost: 39.105.200.221
+  storagePort: 80
+  thumbImage: #缩略图生成参数，可选
+      width: 150
+      height: 150
+  trackerList: #TrackerList参数,支持多个，我这里只有一个，如果有多个在下方加- x.x.x.x:port
+    - 39.105.200.221:22122
+
+#spring:
+#  http:
+#    multipart:
+#      max-file-size: 100MB # 最大支持文件大小
+#      max-request-size: 100MB # 最大支持请求大小
+
+
 
 
 logging:

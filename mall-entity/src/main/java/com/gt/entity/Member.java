@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * <p>
@@ -69,6 +70,12 @@ public class Member extends Model<Member> {
      * 会员等级0普通
      */
 	private Integer grade;
+	/**
+	 * 创建时间
+	 */
+	@TableField("creat_time")
+	private Date creatTime;
+
 
 
 	@Override

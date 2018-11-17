@@ -27,7 +27,7 @@ public class MpGenerator {
     private static final String OUTPUTJAVAMODEL = OUTPUTBASEDIR + "src/main/java";
     // 需要生成的表
     private static final String[] GENERATORTABLENAME = new String[]{
-        "member"
+        "picture"
     };
     // 去除表前缀 例如：bus_user 填入bus 生成的 user
     private static final String[] TABLEPREFIX = new String[]{"t"};

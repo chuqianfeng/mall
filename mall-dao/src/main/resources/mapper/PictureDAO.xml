@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.dao.mapper.PictureDAO">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gt.entity.Picture">
+        <id column="id" property="id" />
+        <result column="res_id" property="resId" />
+        <result column="pic_name" property="picName" />
+        <result column="price" property="price" />
+        <result column="status" property="status" />
+        <result column="creat_time" property="creatTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, res_id, pic_name, price, status, creat_time
+    </sql>
+
+</mapper>

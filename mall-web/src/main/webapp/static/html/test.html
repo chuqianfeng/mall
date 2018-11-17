@@ -7,15 +7,53 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    <script src="../js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $.ajax({
+                type : "GET",
+                url : "/test/18IS2018/queryPicList",
+                data : "",
+                dataType : "json",
+                async : false,
+                success : function(res) {
+                    if(res.code == 0){
+                       var list =  res.data;
+                       if(list != null && list.length > 0){
+                           var html = "";
+                           html += "<div class='fukuan_item'>";
+                           for(var i = 0;i<list.length;i++){
+                               html += "<label><div ><img src="+'"'+list[i].picName+'"'+'>'+"</div></label>";
+                           }
+                           html += "</div>";
+                           $("#yhqDiv").append(html);
+                       }
+                    }
+
+
+                },
+                error : function(e) {
+                    parent.alertMsg("访问异常!");
+                }
+            });
+
+        });
+    </script>
+
+
 </head>
 
 <body>
-<form action="http://192.168.1.5:8080/test/filesUpload" method="POST" name="pict" id="pict"
+<div class="fukuan_item" id="yhqDiv" >
+    <span></span>
+</div>
+
+<form action="http://192.168.142.1:8080/upload/fdfs_upload" method="POST" name="pict" id="pict"
       enctype="multipart/form-data">
     <table>
         <tr>
             <td>图片上传：</td>
-            <td><input type=file name="myfiles" id="doc"
+            <td><input type=file name="file" multiple = "multiple" id="doc"
                        onchange="showImage();">
             </td>
             <div id="localImag">
@@ -25,7 +63,7 @@
         <tr>
             <td>pic上传:</td>
             <!-- 为了实现张图片上传，上传框这个name要都一样 -->
-            <td><input type="text" name="price" id="pri"></td>
+            <td><input type="number" name="price" id="pri" placeholder="price"></td>
             <td>
             </td>
         </tr>
