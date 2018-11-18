@@ -18,12 +18,13 @@
                 async : false,
                 success : function(res) {
                     if(res.code == 0){
-                       var list =  res.data;
+                       var list =  res.data.list;
+                       var picUrl = res.data.picUrl;
                        if(list != null && list.length > 0){
                            var html = "";
                            html += "<div class='fukuan_item'>";
                            for(var i = 0;i<list.length;i++){
-                               html += "<label><div ><img src="+'"'+list[i].picName+'"'+'>'+"</div></label>";
+                               html += "<label><div ><img src="+'"'+picUrl+list[i].picName+'"'+'>'+"</div></label>";
                            }
                            html += "</div>";
                            $("#yhqDiv").append(html);

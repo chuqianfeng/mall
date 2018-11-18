@@ -5,6 +5,7 @@ import com.gt.entity.Member;
 import com.gt.entity.Picture;
 import com.gt.service.IPictureService;
 import com.gt.utils.CommonUtil;
+import com.gt.utils.PropertiesUtil;
 import com.gt.utils.ServerResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -113,10 +114,14 @@ public class TestController {
     @RequestMapping("/18IS2018/queryPicList")
     public void queryPicList(HttpServletRequest request, HttpServletResponse response) throws IOException {
         ServerResponse sp = ServerResponse.createByFail();
+        Map<String,Object> map = new HashMap<>();
+
         try{
             log.error("进入/18IS2018/queryPicList，参数为：");
             List<Picture> list = pictureService.queryPicList();
-            sp = ServerResponse.createBySuccss(list);
+            map.put("list",list);
+            map.put("picUrl", PropertiesUtil.getPicUrl());
+            sp = ServerResponse.createBySuccss(map);
             CommonUtil.write(response,sp);
             log.error(JSONObject.toJSONString(sp));
 
@@ -126,6 +131,8 @@ public class TestController {
         }
 
     }
+
+
 
 
 

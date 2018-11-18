@@ -1,6 +1,7 @@
 package com.gt.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.gt.entity.Picture;
 import com.gt.service.IPictureService;
 import com.gt.utils.CommonUtil;
@@ -33,7 +34,7 @@ public class UploadController {
     private FastDFSClientWrapper dfsClient;
 
     @RequestMapping("/fdfs_upload")
-    public void fdfsUpload(@RequestParam("file") MultipartFile[] files,
+    public String fdfsUpload(@RequestParam("file") MultipartFile[] files,
                              HttpServletRequest request,@RequestParam Map<String,Object> map)  throws Exception {
         ServerResponse sp = ServerResponse.createByFail();
         try {
@@ -48,19 +49,27 @@ public class UploadController {
                     MultipartFile file = files[i];
                     // 保存文件
                     String fileUrl = dfsClient.uploadFile(file);
+                    int index = fileUrl.indexOf("/group1");
+                    String newPicUrl = fileUrl.substring(index);
+                    System.out.println(newPicUrl);
                     System.out.println("&&&&&&&&&&"+fileUrl);
                     Picture picture = new Picture();
                     picture.setCreatTime(new Date());
                     picture.setPrice(price);
-                    picture.setPicName(list.get(i));
+                    picture.setPicName(fileUrl);
                     picture.setStatus(1);
+                    System.out.println("picture："+ JSONObject.toJSONString(picture));
                     sp = pictureService.insertPic(picture);
                 }
             }
+
         }catch (Exception e){
             e.printStackTrace();
         }
+        return "/static/html/test.html";
 
     }
+
+
 
 }
