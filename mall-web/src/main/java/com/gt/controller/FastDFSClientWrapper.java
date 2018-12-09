@@ -3,7 +3,10 @@ package com.gt.controller;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.github.tobato.fastdfs.exception.FdfsUnsupportStorePathException;
 import com.gt.config.FdfsConfig;
+import com.gt.utils.CommonUtil;
+import com.gt.utils.ServerResponse;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,7 +38,25 @@ public class FastDFSClientWrapper {
      * @return
      */
     private String getResAccessUrl(StorePath storePath) {
-        String fileUrl =  fdfsConfig.getResHost() + ":" + fdfsConfig.getStoragePort() + "/" + storePath.getFullPath();
+//        String fileUrl =  fdfsConfig.getResHost() + ":" + fdfsConfig.getStoragePort() + "/" + storePath.getFullPath();
+        String fileUrl =   "/" + storePath.getFullPath();
         return fileUrl;
+    }
+
+    /**
+     * 删除文件
+     * @param fileUrl 文件访问地址
+     * @return
+     */
+    public ServerResponse deleteFile(String fileUrl) {
+        ServerResponse sp = ServerResponse.createByFail();
+        if (CommonUtil.isEmpty(fileUrl)) {
+            sp = ServerResponse.createByFail("图片地址为空");
+            return sp;
+        }
+        StorePath storePath = StorePath.praseFromUrl(fileUrl);
+        storageClient.deleteFile(storePath.getGroup(), storePath.getPath());
+        sp = ServerResponse.createBySuccss();
+        return sp;
     }
 }

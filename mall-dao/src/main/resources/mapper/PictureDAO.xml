@@ -10,11 +10,12 @@
         <result column="price" property="price" />
         <result column="status" property="status" />
         <result column="creat_time" property="creatTime" />
+        <result column="class_id" property="classId" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, res_id, pic_name, price, status, creat_time
+        id, res_id, pic_name, price, status, creat_time,class_id
     </sql>
 
 </mapper>

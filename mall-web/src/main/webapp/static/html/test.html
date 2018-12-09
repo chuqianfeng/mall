@@ -9,10 +9,12 @@
 
     <script src="../js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
+//        var homeUrl = "http://www.181093.com";
+        var homeUrl = "http://192.168.142.1:8080";
         $(function(){
             $.ajax({
                 type : "GET",
-                url : "/test/18IS2018/queryPicList",
+                url : homeUrl+"/test/18IS2018/queryPicList",
                 data : "",
                 dataType : "json",
                 async : false,
@@ -20,13 +22,15 @@
                     if(res.code == 0){
                        var list =  res.data.list;
                        var picUrl = res.data.picUrl;
+                       var homeUrl = res.data.homeUrl;
                        if(list != null && list.length > 0){
                            var html = "";
                            html += "<div class='fukuan_item'>";
                            for(var i = 0;i<list.length;i++){
-                               html += "<label><div ><img src="+'"'+picUrl+list[i].picName+'"'+'>'+"</div></label>";
+                               html += "<label><div ><img src="+'"'+picUrl+list[i].picName+'"'+'>'+"</div><div>单价："+list[i].price+"</div>"
+                               html += "<div value="+'"'+list[i].id+'"'+"onclick='deletePic(this)'"+"picId="+list[i].id+" class = 'pic'>删除</div>";
                            }
-                           html += "</div>";
+                           html += "</label></div>";
                            $("#yhqDiv").append(html);
                        }
                     }
@@ -39,6 +43,28 @@
             });
 
         });
+    </script>
+    <script type="text/javascript">
+        function deletePic(obj){
+            var picId = $(obj).attr("picId");
+            var options = {
+                url : "http://192.168.142.1:8080/upload//18IS2018/deletePic",
+                data : {
+                    picId:picId
+                },
+                dataType : "json",
+                async: false,
+                type : "post",
+                success : function(res){
+                    if(res.code == 0){
+                        window.location.reload(true);
+                    }
+
+                }
+            };
+            $.ajax(options);
+
+        }
     </script>
 
 

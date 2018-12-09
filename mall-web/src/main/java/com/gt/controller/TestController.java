@@ -112,15 +112,16 @@ public class TestController {
      * @throws IOException
      */
     @RequestMapping("/18IS2018/queryPicList")
-    public void queryPicList(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void queryPicList(HttpServletRequest request, HttpServletResponse response,Integer claId) throws IOException {
         ServerResponse sp = ServerResponse.createByFail();
         Map<String,Object> map = new HashMap<>();
 
         try{
             log.error("进入/18IS2018/queryPicList，参数为：");
-            List<Picture> list = pictureService.queryPicList();
+            List<Picture> list = pictureService.queryPicList(claId);
             map.put("list",list);
             map.put("picUrl", PropertiesUtil.getPicUrl());
+            map.put("homeUrl", PropertiesUtil.getHomeUrl());
             sp = ServerResponse.createBySuccss(map);
             CommonUtil.write(response,sp);
             log.error(JSONObject.toJSONString(sp));

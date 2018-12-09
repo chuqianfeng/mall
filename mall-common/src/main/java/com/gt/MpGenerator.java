@@ -50,11 +50,11 @@ public class MpGenerator {
     // 驱动
     private static final String DRIVERNAME = "com.mysql.jdbc.Driver";
     // url
-    private static final String URL = "jdbc:mysql://localhost:3306/mall?characterEncoding=utf8";
+    private static final String URL = "jdbc:mysql://39.105.200.221:3306/mall?characterEncoding=utf8";
     // 数据库用户名
-    private static final String USERNAME = "root";
+    private static final String USERNAME = "byron";
     // 密码
-    private static final String PWD = "1234";
+    private static final String PWD = "Byron@472501";
     // 作者
     private static final String AUTHOR = "cqf";
     private static Logger logger = LoggerFactory.getLogger(MpGenerator.class);

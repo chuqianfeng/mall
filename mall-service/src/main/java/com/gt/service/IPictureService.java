@@ -12,5 +12,10 @@ public interface IPictureService {
 
     public ServerResponse insertPic(Picture picture);
 
-    public List<Picture> queryPicList();
+    public List<Picture> queryPicList(Integer claId);
+
+    public Picture getPicById(Integer picId);
+
+    public  ServerResponse updateByPicId(Integer picId);
+
 }

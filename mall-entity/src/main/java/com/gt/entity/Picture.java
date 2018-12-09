@@ -55,6 +55,11 @@ public class Picture extends Model<Picture> {
      */
     @TableField("creat_time")
     private Date creatTime;
+    /**
+     * 种类1轮播图，2其它
+     */
+    @TableField("class_id")
+    private Integer classId;
 
 
     @Override

@@ -31,17 +31,4 @@ public class Application extends SpringBootServletInitializer {
         return builder.sources(Application.class);
     }
 
-    /**
-     * 文件上传配置
-     * @return
-     */
-    @Bean
-    public MultipartConfigElement multipartConfigElement() {
-        MultipartConfigFactory factory = new MultipartConfigFactory();
-        //单个文件最大
-        factory.setMaxFileSize("102400KB"); //KB,MB
-        /// 设置总上传数据总大小
-        factory.setMaxRequestSize("1024000KB");
-        return factory.createMultipartConfig();
-    }
 }
