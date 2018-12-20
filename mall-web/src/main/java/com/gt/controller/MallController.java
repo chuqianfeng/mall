@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 
 /**
@@ -76,6 +77,8 @@ public class MallController {
         try{
             System.out.println(member);
             logger.error("进入/18IS2018/insertMemberInfo，参数为："+JSONObject.toJSONString(member));
+            Date date = new Date();
+            member.setCreatTime(date);
             sp = memberService.insertMemberInfor(member);
 
 

@@ -60,9 +60,9 @@ mybatis-plus:
 
 web:
   #服务地址
-  homeUrl: http://www.181093.com/
+  homeUrl: https://181093.com/
   #图片前缀
-  picUrl: http://www.181093.com:8080/
+  picUrl: https://181093.com:8080/
 
 # 分布式文件系统FDFS配置
 fdfs:

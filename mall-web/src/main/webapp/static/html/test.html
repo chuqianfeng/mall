@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>精致生活</title>
 
     <script src="../js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
-//        var homeUrl = "http://www.181093.com";
-        var homeUrl = "http://192.168.142.1:8080";
+        var homeUrl = "https://181093.com";
+//        var homeUrl = "http://192.168.142.1:8080";
         $(function(){
             $.ajax({
                 type : "GET",
@@ -48,7 +48,7 @@
         function deletePic(obj){
             var picId = $(obj).attr("picId");
             var options = {
-                url : "http://192.168.142.1:8080/upload//18IS2018/deletePic",
+                url : "https://181093.com/upload//18IS2018/deletePic",
                 data : {
                     picId:picId
                 },
@@ -75,7 +75,7 @@
     <span></span>
 </div>
 
-<form action="http://192.168.142.1:8080/upload/fdfs_upload" method="POST" name="pict" id="pict"
+<form action="https://181093.com/upload/fdfs_upload" method="POST" name="pict" id="pict"
       enctype="multipart/form-data">
     <table>
         <tr>
